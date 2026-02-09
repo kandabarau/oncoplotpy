@@ -1,0 +1,16 @@
+# Data files (Don't push large genomic files)
+*.maf
+*.gz
+*.svg
+*.pdf
+
+# Python environment & cache
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.ipynb_checkpoints/
+
+# System files
+.DS_Store

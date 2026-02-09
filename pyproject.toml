@@ -1,0 +1,27 @@
+[project]
+name = "oncoplotpy"
+version = "1.0.0"
+description = "Mutation plots (oncoplots / waterfall plots) in Matplotlib."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+keywords = ["bioinformatics", "oncoplot", "genomics", "matplotlib", "maf"]
+authors = [
+  {name = "Sergey Kandabarau", email = "kandabarau@gmail.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "seaborn"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/kandabarau/oncoplotpy"
+"Bug Tracker" = "https://github.com/kandabarau/oncoplotpy/issues"

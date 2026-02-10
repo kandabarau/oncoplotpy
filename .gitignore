@@ -1,0 +1,17 @@
+*.maf
+*.gz
+*.svg
+*.pdf
+
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.ipynb_checkpoints/
+
+.DS_Store
+src/*.egg-info/
+*.egg-info/
+
+!.gitignore

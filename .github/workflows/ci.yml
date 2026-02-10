@@ -1,0 +1,38 @@
+name: CI
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install
+        run: pip install . pytest pylint pandas numpy matplotlib seaborn
+
+      - name: Test
+        run: pytest
+
+      - name: Lint and Badge
+        run: |
+          mkdir -p .badges
+          # Extract score, e.g., 9.58
+          SCORE=$(pylint src/oncoplotpy | grep "rated at" | awk '{print $7}' | cut -d/ -f1)
+          # Determine color based on score
+          if (( $(echo "$SCORE > 9.0" | bc -l) )); then COLOR=brightgreen; else COLOR=yellowgreen; fi
+          # Generate the URL for a real Shields.io badge
+          echo "https://img.shields.io/badge/pylint-$SCORE-informational?style=flat&logo=python&color=$COLOR" > .badges/pylint.txt
+
+      # This keeps the "real" score in your repo
+      - name: Upload badge info
+        uses: actions/upload-artifact@v4
+        with:
+          name: pylint-score
+          path: .badges/pylint.txt
